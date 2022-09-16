@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "file-notes"
-version = "0.0.2"
+version = "0.0.1.dev"
 description = "file-notes can add note information to the file. It works with Python 3.6+."
 authors = ["Flyer-Jia <flyerjia@outlook.com>"]
 license = "MIT"

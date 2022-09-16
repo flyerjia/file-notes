@@ -41,7 +41,7 @@ def convert_size(size):
     elif 1024 * 1024 * 1024 <= size < 1024 * 1024 * 1024 * 1024:
         return str(round(size / (1024 * 1024 * 1024), 1)) + 'G'
     else:
-        return str(round(size / (1024 * 1024 * 1024 * 1024), 1)) + 't'
+        return str(round(size / (1024 * 1024 * 1024 * 1024), 1)) + 'T'
 
 
 def get_file_stat(file):
