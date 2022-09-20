@@ -60,29 +60,23 @@ def get_now_files():
     return files
 
 
-def get_content_len(content):
-    tol_len = 0
-    for char in content:
-        if u'\u4e00' <= char <= u'\u9fff':
-            tol_len += 2
-        else:
-            tol_len += 1
-    return tol_len
-
-
 def get_extra_num(content):
     extra_num = 0
     for char in content:
-        if u'\u4e00' <= char <= u'\u9fff':
+        if u'\u0391' <= char <= u'\uffe5':
             extra_num += 1
     return extra_num
+
+
+def get_content_len(content):
+    return len(content) + get_extra_num(content)
 
 
 def adjust_len(content, max_len=40):
     if get_content_len(content) <= max_len:
         return content
     else:
-        return content[:max_len - 3] + '...'
+        return content[:max_len - 3 - get_extra_num(content)] + '...'
 
 
 def adjust_type(content, type):
@@ -106,12 +100,13 @@ def print_info(file_info):
         'type': 'file/dir/deled'
     }
     """
-    name = adjust_len(file_info['name'], 30)
+    # import pdb;pdb.set_trace()
+    name = adjust_len(file_info['name'], 40)
     size = adjust_len(file_info['size'], 6)
     mtime = adjust_len(file_info['mtime'], 20)
-    note = adjust_len(file_info['note'], 400)
+    note = adjust_len(file_info['note'], 100)
 
-    name = name.ljust(30 - get_extra_num(name), ' ')
+    name = name.ljust(40 - get_extra_num(name), ' ')
     size = size.rjust(6 - get_extra_num(size), ' ')
     mtime = mtime.rjust(20 - get_extra_num(mtime), ' ')
     note = note.ljust(100 - get_extra_num(note), ' ')
