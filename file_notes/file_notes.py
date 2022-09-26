@@ -121,7 +121,7 @@ def print_info(file_info):
 
 def show_files_info(file_notes, files):
     had_show = []
-    files = sorted(files, key=lambda x: x.stat().st_mtime)
+    files = sorted(files, key=lambda x: x.name)
     for file in files:
         file_info = {}
         file_info['name'] = file.name
