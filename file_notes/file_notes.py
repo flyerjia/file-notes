@@ -104,12 +104,12 @@ def print_info(file_info):
     name = adjust_len(file_info['name'], 40)
     size = adjust_len(file_info['size'], 6)
     mtime = adjust_len(file_info['mtime'], 20)
-    note = adjust_len(file_info['note'], 100)
+    note = adjust_len(file_info['note'], 60)
 
     name = name.ljust(40 - get_extra_num(name), ' ')
     size = size.rjust(6 - get_extra_num(size), ' ')
     mtime = mtime.rjust(20 - get_extra_num(mtime), ' ')
-    note = note.ljust(100 - get_extra_num(note), ' ')
+    note = note.ljust(60 - get_extra_num(note), ' ')
 
     name = adjust_type(name, file_info['type'])
     size = adjust_type(size, file_info['type'])
